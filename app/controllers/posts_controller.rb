@@ -19,6 +19,21 @@ before_action :authenticate_user!, :only => [:new, :create]
    end
   end
 
+ def edit
+   @group = Group.find(params[:group_id])
+   @posts = current_user.posts
+   @post = Post.find(params[:post_id])
+ end
+
+ def update
+   @group = Group.find(params[:group_id])
+   @posts = current_user.posts
+   @post = Post.find(params[:post_id])
+   @post.update
+   redirect_to account_posts_path
+ end
+
+
   private
 
   def post_params

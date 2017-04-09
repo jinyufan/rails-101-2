@@ -3,6 +3,11 @@ class Account::PostsController < ApplicationController
 
   def index
     @posts = current_user.posts
-  end  
+  end
+
+  def edit
+    @posts = current_user.posts
+    @post = Post.find(params[:id])
+  end
 
 end
